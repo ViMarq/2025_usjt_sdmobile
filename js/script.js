@@ -1,3 +1,47 @@
+//closures
+let umaFuncao = function(){
+    console;log('Fui armazenado em uma variavel')
+    return () => console.log('oi')
+}
+umaFuncao()()
+
+function f(funcao){
+    console.log(funcao)
+    funcao()
+}
+f(umaFuncao())
+
+//funcao que recebe funcao como paramtro quer dizer que é de alta ordem
+//funcao que devolve uma funcao quer dizer que é de alta ordem
+// const a = 1
+// const f = b => b + 1 // expressao de primeira classe é quando pode ser manipulada e devolvida em forma de funcao, parametro
+// f(1)
+// const f2 = () => 1
+//arrow functions
+// const ehPar = n => {
+//     n % 2 === 0
+// } 
+// console.log(ehPar)
+// const triplo = v => {
+//     console.log(n)
+//     return 3 * n
+// }
+// console.log(triplo(5))
+// const dobro = v => v * 2
+// console.log(dobro(5))
+// const f5 = a => {return 1}
+// console.log(f5())
+// const f4 = (a, b) => a + b
+// console.log(f4(2, 3))
+// const f3 = a => {console.log(a)}
+// f3(1)
+// const f2 = () => {console.log('oi')}
+// f2()
+// const f1 = a => {console.log(a)}
+// f1(1)
+//() => {}
+
+
 //funções
 //functions
 // const triplo = function(n = 5){
