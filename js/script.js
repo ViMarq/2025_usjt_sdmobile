@@ -1,15 +1,77 @@
-//closures
-let umaFuncao = function(){
-    console;log('Fui armazenado em uma variavel')
-    return () => console.log('oi')
+function eAgora(){
+    let cont = 1
+    function f1(){
+        console.log(++cont)
+    }
+    cont++
+    function f2(){
+        console.log(cont)
+    }
+    cont++
+    return {f1, f2}
 }
-umaFuncao()()
 
-function f(funcao){
-    console.log(funcao)
-    funcao()
-}
-f(umaFuncao())
+const res = eAgora()
+console.log(res.f1())
+console.log(res.f2())
+
+// function saudacoesFactory(saudacao, nome){
+//     return function(){
+//         console.log(`${saudacao}, ${nome}`)
+//     }
+// }
+
+// const oiJoao = saudacoesFactory('Oi', 'João')
+// const tchauJoao = saudacoesFactory('Tchau', 'João')
+// oiJoao()
+// tchauJoao()
+
+// function f(){
+//     let nome = 'João'
+//     function g(){
+//         console.log(nome)
+//     }
+//     return g
+// }
+// const resultadoDaF()
+// resultadoDaF()
+
+
+// function f(){
+//     let nome = 'João'
+//     function g(){
+//         console.log(nome)
+//     }
+//     g()
+// }
+// f()
+
+// function f(funcao){
+//     console.log('f')
+//     return funcao()
+// }
+
+// function g(){
+//     console.log('g')
+//     function outraFuncao(){
+//         console.log('Fui criada por g')
+//     }
+//     return outraFuncao
+// }
+// console.log(f(g)())
+
+//closures
+// let umaFuncao = function(){
+//     console;log('Fui armazenado em uma variavel')
+//     return () => console.log('oi')
+// }
+// umaFuncao()()
+
+// function f(funcao){
+//     console.log(funcao)
+//     funcao()
+// }
+// f(umaFuncao())
 
 //funcao que recebe funcao como paramtro quer dizer que é de alta ordem
 //funcao que devolve uma funcao quer dizer que é de alta ordem
