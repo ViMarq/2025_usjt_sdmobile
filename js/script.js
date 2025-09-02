@@ -1,19 +1,214 @@
-function eAgora(){
-    let cont = 1
-    function f1(){
-        console.log(++cont)
-    }
-    cont++
-    function f2(){
-        console.log(cont)
-    }
-    cont++
-    return {f1, f2}
-}
 
-const res = eAgora()
-console.log(res.f1())
-console.log(res.f2())
+//IO-BOUND -> OPERAÇÕES DE ENTRADA E SAIDA
+
+const fs = require('fs')
+const abrirArquivo = function(nomeArquivo) {
+    //callback: você define, mas não chama
+    function exibirConteudo(erro, conteudo){
+        if(erro) {
+            console.log(`Erro: ${erro}`)
+        }
+        else{
+            console.log(
+                `Conteúdo: ${conteudo.toString()}`
+            )
+            const dobro = 
+                Number(conteudo.toString()) * 2
+            const finalizar = (erro) => {
+                if(erro){
+                    console.log(`Erro na escrita ${erro}`)
+                }
+                else{
+                    console.log("Escrita ok")
+                }
+                console.log('D')
+            }
+            fs.writeFile(
+                'dobro.txt',
+                dobro.toString(),
+                finalizar
+            )
+        }
+        console.log('C')
+    }
+    fs.readFile(nomeArquivo, exibirConteudo)
+    console.log('B')
+
+}
+abrirArquivo('arquivo.txt')
+console.log('A')
+
+
+
+//Execução íncrona(bloqueante)
+//Execução assíncrona(não bloqueante)
+
+//CPU-BOUND -> PROCESSAMENTO QUE DEPENDE DA CPU EX: CONTAS
+
+
+// function demorada(){
+//     const atualMais2 = new Date().getTime() + 2000
+//     while (new Date().getTime() <= atualMais2);
+//     const d = 8 + 4
+//     return d
+// }
+// const a = 2 + 3
+// const b = 5 + 9
+// //const d = demorada()
+// setTimeout(() => {
+//     const d = demorada()
+//     console.log(`d1: ${d}`)
+// }, 1000)
+// setTimeout(() => {
+//     const d = demorada()
+//     console.log(`d2: ${d}`)
+// }, 500)
+// const e = 2 + a - b
+// console.log(`e: ${e}`)
+
+
+// const a = 2 + 7
+// const b = 5
+// console.log(a + b)
+
+
+
+// console.log('Eu primeiro...')
+// console.log('Agora eu...')
+// console.log('Sempre serei o último...')
+
+
+
+//Objetos Javascript (JSON)
+//Javascript Object Notation
+//Uma pessoa que se chama João tem 17 anos
+
+//uma calculadora tem marca e modelo. Além disso, ela sabe fazer soma e subtração de dois numeros. 
+// A soma, ela faz com arrow function sem usar return. 
+// A subtração, ela faz com function regular
+
+// const calculadora = {
+//     marca: 'CIS',
+//     modelo: 'Cientifica',
+//     operacoes: {
+//         soma: (a,b) => (a+b),
+//         subtracao: function(a,b) {
+//             return a-b
+//         }
+//     }
+// }
+
+// for(let operacoes of Object.keys(calculadora.operacoes)){
+//     console.log(`${operacoes}: ${calculadora.operacoes[operacoes](2,3)}`)
+// }
+
+// console.log(calculadora.operacoes.soma(3,5))
+// console.log(calculadora.operacoes.subtracao(3,5))
+
+
+
+//Concessionária que tem CNPJ e endereço (logradouro, numero, bairo e estado) e um estoque de veículos. Cada
+//veículo tem placa, marca e modelo. A concessionária pode ter a qualquer instante, 0 ou mais veículos
+
+// const concessionaria = {
+//     cnpj: '0001234481-0001',
+//     endereco: {
+//         logradouro: 'Rua XYZ',
+//         numero: 3000,
+//         bairro: {
+//             nome: 'Vila automotiva',
+//             cep: '00000-000',
+//             cidade: {
+//                 nome: 'Itu',
+//                 regiao: 'Zona Sul',
+//                 numeroHabitantes: '10000'
+//             },
+//             estado: { 
+//                 codigo: 'SP' 
+//             },  
+//         }
+//     },
+//     veiculos: [
+//         {
+//             placa: 'ABC-1234',
+//             marca: 'Ford',
+//             modelo: 'Fiesta'
+//         },
+//         {
+//             placa: 'JJJ-5678',
+//             marca: 'GM',
+//             modelo: 'Corsa'
+//         }
+//     ]
+// }
+
+// console.log(concessionaria.veiculos[1].modelo)
+// for(let veiculo of concessionaria.veiculos){
+//     console.log(veiculo.placa)
+// }
+
+
+
+
+
+//Uma pessoa se chama Maria, tem 21 anos e mora na rua ABC, numero 200, bairro Vila J.
+
+// const pessoa = {
+//     nome: 'Maria',
+//     idade: 21,
+//     endereco: {
+//         logradouro: 'Rua ABC',
+//         numero: 200,
+//         bairro: 'Vila J'
+//     }
+// }
+
+// console.log(pessoa.endereco.logradouro)
+// console.log(pessoa['endereco']['numero'])
+// console.log(pessoa.endereco['bairro'])
+// console.log(pessoa['endereco'].bairro)
+
+// const pessoa = {
+//     nome: 'João',
+//     idade: 17
+// }
+
+//. e []
+
+// console.log(pessoa.nome)
+// console.log(pessoa.idade)
+// console.log(pessoa['nome'])
+// console.log(pessoa['idade'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function eAgora(){
+//     let cont = 1
+//     function f1(){
+//         console.log(++cont)
+//     }
+//     cont++
+//     function f2(){
+//         console.log(cont)
+//     }
+//     cont++
+//     return {f1, f2}
+// }
+
+// const res = eAgora()
+// console.log(res.f1())
+// console.log(res.f2())
 
 // function saudacoesFactory(saudacao, nome){
 //     return function(){
@@ -79,7 +274,9 @@ console.log(res.f2())
 // const f = b => b + 1 // expressao de primeira classe é quando pode ser manipulada e devolvida em forma de funcao, parametro
 // f(1)
 // const f2 = () => 1
+
 //arrow functions
+
 // const ehPar = n => {
 //     n % 2 === 0
 // } 
