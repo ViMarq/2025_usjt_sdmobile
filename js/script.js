@@ -1,42 +1,157 @@
+// 1 + 2 + 3+ ... + n-2 + n-1 + n
+
+// async/await
+
+// const fatorial = (n) => {
+//     //n * (n-1) * (n-2) * ... * 3 * 2 * 1
+//     if (n < 0)
+//         return Promise.reject("Negativos não podem ser usados")
+//     if(n === 0)
+//         return Promise.resolve(1)
+//     let ac = 1
+//     for(let i =2; i <= n; i++)
+//         ac *= i
+//     return Promise.resolve(ac)
+// }
+
+// function chamadaComThenECatch (){
+//     const n1 = 5
+//     const n2 = -1
+//     fatorial(n1)
+//     .then(res => console.log(`Resultado: ${res}`))
+//     .catch(err => console.log(`Erro: ${err}`))
+
+//     fatorial(n2)
+//     .then(res => console.log(`Resultado: ${res}`))
+//     .catch(err => console.log(`Erro: ${err}`))
+// }
+// chamadaComThenECatch()
+
+// // async function chamadaComAsyncAwait() {}
+// const chamadaComAsyncAwait = async () => {
+//     const n1 = 5
+//     const n2 = -1
+//     try {
+//         const res1 = await fatorial(n1)
+//         console.log(res1)
+
+//     }
+//     catch(err){
+//         console.log(`Erro: ${err}`)
+//     }
+//     try {
+//         const res2 = await fatorial(n2)
+//         console.log(res2)
+//     }
+//     catch(err){
+//         console.log(`Erro: ${err}`)
+//     }
+// }
+// console.log('Terminando...')
+
+
+// async function hello(nome) {
+//     return `Olá ${nome}`
+// }
+// const res = hello('Ana')
+// res.then(r => console.log(`Resultado: ${r}`))
+
+// const desafio = (n) => {
+//     //se o valor for negativo, devolver uma promise
+//     //no estado reject. neste caso. o erro deve ser
+//     //"não use valores negativos"
+
+//     //caso contrário, devolver uma promise no estado fulfilled
+//     //use um operador ternário
+//     return new Promise (function(resolve, reject) {
+//         return (n >= 0) 
+//         ? resolve((n/2)*(n+1)) :
+//         reject("Não use valores negativos")
+//     })
+// }
+// const promise = desafio(10)
+// promise.then((r) => {console.log(r)})
+// .catch((r) => {console.log(r)})
+
+
+
+// Promise nascendo fulfiled
+
+// const calculoRapidinho = (n) => {
+//     // return Promise.resolve((n / 2) * (n + 1))
+//     //refaça construindo a promise com new
+//     //voce quer devolver uma promise já fullfilled, porém, você quer que ela seja construída com new
+//     return new Promise(function(resolve, reject) {
+//         resolve((n / 2) * (n + 1))
+//     })
+// }
+// const p = calculoRapidinho(10)
+
+// p.then((r) => {
+//     console.log(`Resultado: ${r}`)
+// })
+
+// Promise nascendo pending
+
+// const calculoDemorado = (n) => {
+//     const p = new Promise((resolve, reject) => {
+//         let ac = 0
+//         for (let i = 1; i <= n; i++) ac += i
+//         resolve(ac)
+//     })
+//     return p
+// }
+// const minhaPromise = calculoDemorado(10)
+//then/catch
+// minhaPromise.then((res) => {
+//     console.log(`Resultado: ${res}`)
+// })
+// console.log(`Terminando...`)
+
+// const res = calculoDemorado(10)
+// console.log(res)
+
+
+
 
 //IO-BOUND -> OPERAÇÕES DE ENTRADA E SAIDA
 
-const fs = require('fs')
-const abrirArquivo = function(nomeArquivo) {
-    //callback: você define, mas não chama
-    function exibirConteudo(erro, conteudo){
-        if(erro) {
-            console.log(`Erro: ${erro}`)
-        }
-        else{
-            console.log(
-                `Conteúdo: ${conteudo.toString()}`
-            )
-            const dobro = 
-                Number(conteudo.toString()) * 2
-            const finalizar = (erro) => {
-                if(erro){
-                    console.log(`Erro na escrita ${erro}`)
-                }
-                else{
-                    console.log("Escrita ok")
-                }
-                console.log('D')
-            }
-            fs.writeFile(
-                'dobro.txt',
-                dobro.toString(),
-                finalizar
-            )
-        }
-        console.log('C')
-    }
-    fs.readFile(nomeArquivo, exibirConteudo)
-    console.log('B')
+// const fs = require('fs')
+// const abrirArquivo = function(nomeArquivo) {
+//     //callback: você define, mas não chama
+//     function exibirConteudo(erro, conteudo){
+//         if(erro) {
+//             console.log(`Erro: ${erro}`)
+//         }
+//         else{
+//             console.log(
+//                 `Conteúdo: ${conteudo.toString()}`
+//             )
+//             const dobro = 
+//                 Number(conteudo.toString()) * 2
+//             const finalizar = (erro) => {
+//                 if(erro){
+//                     console.log(`Erro na escrita ${erro}`)
+//                 }
+//                 else{
+//                     console.log("Escrita ok")
+//                 }
+//                 console.log('D')
+//             }
+//             fs.writeFile(
+//                 'dobro.txt',
+//                 dobro.toString(),
+//                 finalizar
+//             )
+//         }
+//         console.log('C')
+//     }
+//     fs.readFile(nomeArquivo, exibirConteudo)
+//     console.log('B')
 
-}
-abrirArquivo('arquivo.txt')
-console.log('A')
+// }
+// abrirArquivo('arquivo.txt')
+// console.log('A')
 
 
 
