@@ -26,16 +26,21 @@ const url = `${PROTOCOL}://${BASE_URL}?appid=${APPID}&q=${Q}&cnt${CNT}&units=${U
 async function comAsyncAwait() {
     try{
         const result = await axios.get(url)
-        console.log(result)
-        console.log('******************')
-        console.log('Agora o data')
-        console.log(result.data)
-        console.log('******************')
-        console.log('Agora o list')
-        console.log(result.data.list)
+        const res = result.data.list
+        console.log(res)
+
+        // console.log(result)
+        // console.log('******************')
+        // console.log('Agora o data')
+        // console.log(result.data)
+        // console.log('******************')
+        // console.log('Agora o list')
+        // console.log(result.data.list)
+
         //interar sobre a lista, mostrando a sensação térmica de cada previsão
         //ah, mostrar o nível do mar também
-        for (let previsao of result){
+
+        for (let previsao of res){
             console.log(`dt: ${new Date(previsao.dt * 1000).toLocaleString()}`)
             console.log(`Sensação térmica: ${previsao.main.feels_like}`)
             console.log(`Nível do mar: ${previsao.main.sea_level}`)}
@@ -44,6 +49,7 @@ async function comAsyncAwait() {
             console.log(e)
         }
     }
+    
 comAsyncAwait()
 
 

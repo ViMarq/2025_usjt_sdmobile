@@ -264,8 +264,6 @@
 
 
 
-
-
 //Uma pessoa se chama Maria, tem 21 anos e mora na rua ABC, numero 200, bairro Vila J.
 
 // const pessoa = {
@@ -294,17 +292,6 @@
 // console.log(pessoa.idade)
 // console.log(pessoa['nome'])
 // console.log(pessoa['idade'])
-
-
-
-
-
-
-
-
-
-
-
 
 
 
