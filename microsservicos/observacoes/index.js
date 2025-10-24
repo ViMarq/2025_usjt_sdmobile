@@ -1,3 +1,4 @@
+const axios = require('axios')
 const express = require('express')
 const app = express()
 const { v4: uuidv4 } = require('uuid')
@@ -19,11 +20,16 @@ app.post('/lembretes/:id/observacoes', (req, res) => {
     const { texto } = req.body
     const observacao = {
         id: idObs,
-        texto: texto
+        texto,
+        idLembrete: req.params.id
     }
     const observacoes = baseObservacoes[req.params.id] || []
     observacoes.push(observacao)
     baseObservacoes[req.params.id] = observacoes
+    axios.post('http://localhost:10000/eventos', {
+        tipo: 'ObservacaoCriada',
+        dados: observacao
+    })
     res.status(201).json(observacao) // quer dizer que um recurso foi criado. é uma forma mais específica de dizer que deu certo
 })
 
@@ -32,6 +38,12 @@ app.post('/lembretes/:id/observacoes', (req, res) => {
 //GET
 app.get('/lembretes/:id/observacoes', (req, res) => {
     res.json(baseObservacoes[req.params.id])
+})
+
+app.post('/eventos', function(req, res) {
+    const evento = req.body
+    console.log(evento)
+    res.end()
 })
 
 const port = 5000

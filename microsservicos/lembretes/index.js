@@ -1,3 +1,4 @@
+const axios = require('axios')
 const express = require('express')
 const app = express()
 //middleware
@@ -38,7 +39,18 @@ app.post('/lembretes', (req, res) => {
     }
     baseLembretes[id] = lembrete
     id++
+    axios.post('http://localhost:10000/eventos', {
+        tipo: 'LembreteCriado',
+        dados: lembrete
+    })
+    // .then(r => res.json(lembrete))
     res.json(lembrete)
+})
+
+app.post('/eventos', (req, res) => {
+    const evento = req.body
+    console.log(evento)
+    res.status(200).end()
 })
 
 const port = 4000
