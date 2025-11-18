@@ -48,9 +48,13 @@ app.post('/lembretes', (req, res) => {
 })
 
 app.post('/eventos', (req, res) => {
-    const evento = req.body
-    console.log(evento)
-    res.status(200).end()
+    try{
+        const evento = req.body
+        console.log(evento)
+    }
+    catch(e){
+        res.status(200).end()
+    }
 })
 
 const port = 4000
